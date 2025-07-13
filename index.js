@@ -3,7 +3,7 @@ const admin = require("firebase-admin");
 
 // 🔒 Do not change this – already working
 admin.initializeApp({
-  credential: admin.credential.cert(require("./firebase-key.json")),
+  credential: admin.credential.cert(require("/etc/secrets/firebase-key.json")),
   projectId: "nyoba2-462111",
 });
 
