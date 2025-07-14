@@ -1,7 +1,8 @@
 const express = require("express");
+const cors = require("cors");
 const admin = require("firebase-admin");
 
-// 🔒 Do not change this – already working
+// 🔒 Firebase Admin Initialization
 admin.initializeApp({
   credential: admin.credential.cert(require("/etc/secrets/firebase-key.json")),
   projectId: "nyoba2-462111",
@@ -12,6 +13,9 @@ db.settings({ databaseId: "demo-database" });
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// 🌐 Enable CORS for all origins (wildcard '*')
+app.use(cors());
 
 // 📄 GET all applicants
 app.get("/applicants", async (req, res) => {
